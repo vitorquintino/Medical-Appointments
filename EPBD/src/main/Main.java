@@ -15,6 +15,7 @@ public class Main {
 		
 		TelaPrincipal tela = new TelaPrincipal();
 		tela.setVisible(true);
+		
 		System.out.println("salve marin");
 	}
 }
