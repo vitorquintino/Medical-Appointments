@@ -36,12 +36,13 @@ public class TelaPrincipal extends JFrame{
 		pnlPrincipal.setSize(780, 580);
 		pnlPrincipal.setLayout(null);
 		
-		imgNovaConsulta = new ImageIcon(new ImageIcon(getClass().getResource("/imagens/add-user.png")).getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
+		//imgNovaConsulta = new ImageIcon(new ImageIcon(getClass().getResource("/imagens/add-user.png")).getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
 		
-		btnNovaConsulta = new JButton(imgNovaConsulta);
+		btnNovaConsulta = new JButton("Consulta");
 		btnNovaConsulta.setLocation(20, 20);
-		btnNovaConsulta.setSize(150, 150);
+		btnNovaConsulta.setSize(120, 50);
 		btnNovaConsulta.setBorder(BorderFactory.createEmptyBorder());
+		btnNovaConsulta.setFont(fonte);
 		//btnNovaConsulta.setContentAreaFilled(false);
 		
 		lblNovaConsulta = new JLabel("Nova consulta");
@@ -50,7 +51,7 @@ public class TelaPrincipal extends JFrame{
 		lblNovaConsulta.setSize(200, 20);
 		
 		pnlPrincipal.add(btnNovaConsulta);
-		pnlPrincipal.add(lblNovaConsulta);
+		//pnlPrincipal.add(lblNovaConsulta);
 		
 		this.add(pnlPrincipal);
 	}
