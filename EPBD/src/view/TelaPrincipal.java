@@ -36,7 +36,7 @@ public class TelaPrincipal extends JFrame{
 		pnlPrincipal.setSize(780, 580);
 		pnlPrincipal.setLayout(null);
 		
-		imgNovaConsulta = new ImageIcon(new ImageIcon(getClass().getResource("/add-user.png")).getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
+		imgNovaConsulta = new ImageIcon(new ImageIcon(getClass().getResource("/imagens/add-user.png")).getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
 		
 		btnNovaConsulta = new JButton(imgNovaConsulta);
 		btnNovaConsulta.setLocation(20, 20);
