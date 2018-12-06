@@ -2,7 +2,8 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -26,6 +27,7 @@ public class TelaPrincipal extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		inicializaTela();
+		defineEventos();
 	}
 	
 	private void inicializaTela() {
@@ -54,5 +56,13 @@ public class TelaPrincipal extends JFrame{
 		//pnlPrincipal.add(lblNovaConsulta);
 		
 		this.add(pnlPrincipal);
+	}
+	
+	private void defineEventos() {
+		btnNovaConsulta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent a) {
+				new TelaProcuraCadastro().setVisible(true);
+			}
+		});
 	}
 }
