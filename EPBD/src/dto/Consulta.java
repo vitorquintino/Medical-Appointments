@@ -1,4 +1,4 @@
-package model;
+package dto;
 import java.sql.Time;
 import java.sql.Date;
 
@@ -14,6 +14,21 @@ public class Consulta {
     private int crmMedico;
     private int idPaciente;
     
+    
+	public Consulta(int idConsulta, Date data, Time inicio, Time fim, int pagou, long valorPago, String formaPagamento,
+			int codigoEspecialidade, int crmMedico, int idPaciente) {
+		super();
+		this.idConsulta = idConsulta;
+		this.data = data;
+		this.inicio = inicio;
+		this.fim = fim;
+		this.pagou = pagou;
+		this.valorPago = valorPago;
+		this.formaPagamento = formaPagamento;
+		this.codigoEspecialidade = codigoEspecialidade;
+		this.crmMedico = crmMedico;
+		this.idPaciente = idPaciente;
+	}
 	public int getIdConsulta() {
 		return idConsulta;
 	}

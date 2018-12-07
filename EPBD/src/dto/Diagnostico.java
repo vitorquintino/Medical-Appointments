@@ -1,4 +1,4 @@
-package model;
+package dto;
 
 public class Diagnostico {
     private String tratamentoRecomendado;
@@ -6,7 +6,19 @@ public class Diagnostico {
     private int idDiagnostico;  
     private String observacoes; 
     
-    public String getTratamentoRecomendado() {
+    
+    public Diagnostico(String tratamentoRecomendado, String remedioReceitados, int idDiagnostico, String observacoes,
+			int idDoenca, int idConsulta) {
+		super();
+		this.tratamentoRecomendado = tratamentoRecomendado;
+		this.remedioReceitados = remedioReceitados;
+		this.idDiagnostico = idDiagnostico;
+		this.observacoes = observacoes;
+		this.idDoenca = idDoenca;
+		this.idConsulta = idConsulta;
+	}
+    
+	public String getTratamentoRecomendado() {
 		return tratamentoRecomendado;
 	}
 	public void setTratamentoRecomendado(String tratamentoRecomendado) {

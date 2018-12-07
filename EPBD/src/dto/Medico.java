@@ -1,10 +1,16 @@
-package model;
+package dto;
 
 public class Medico {
     private int crm;
     private String nome;
     private String telefone;
     
+	public Medico(int crm, String nome, String telefone) {
+		super();
+		this.crm = crm;
+		this.nome = nome;
+		this.telefone = telefone;
+	}
 	public int getCrm() {
 		return crm;
 	}

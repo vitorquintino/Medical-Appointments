@@ -1,4 +1,4 @@
-package model;
+package dto;
 import java.sql.Time;
 
 public class Agenda {
@@ -8,6 +8,15 @@ public class Agenda {
     private Time horaFim;
     private int idMedico;
     
+    
+	public Agenda(int idAgenda, String diaSemana, Time horaInicio, Time horaFim, int idMedico) {
+		super();
+		this.idAgenda = idAgenda;
+		this.diaSemana = diaSemana;
+		this.horaInicio = horaInicio;
+		this.horaFim = horaFim;
+		this.idMedico = idMedico;
+	}
 	public int getIdAgenda() {
 		return idAgenda;
 	}

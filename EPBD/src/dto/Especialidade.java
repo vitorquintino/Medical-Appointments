@@ -1,4 +1,4 @@
-package model;
+package dto;
 
 public class Especialidade {
 	private int indice;	
@@ -6,6 +6,14 @@ public class Especialidade {
 	private String nome;	
 	private int idTaxa;
 	
+	
+	public Especialidade(int indice, int codigo, String nome, int idTaxa) {
+		super();
+		this.indice = indice;
+		this.codigo = codigo;
+		this.nome = nome;
+		this.idTaxa = idTaxa;
+	}
 	public int getIndice() {
 		return indice;
 	}

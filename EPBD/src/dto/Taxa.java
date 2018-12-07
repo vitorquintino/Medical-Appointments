@@ -1,7 +1,19 @@
-package model;
+package dto;
 
 public class Taxa {
 	private int idTaxa;
+	private int ano;
+	private int mes;
+	private long valor;
+	
+	public Taxa(int idTaxa, int ano, int mes, long valor) {
+		super();
+		this.idTaxa = idTaxa;
+		this.ano = ano;
+		this.mes = mes;
+		this.valor = valor;
+	}
+	
 	public int getIdTaxa() {
 		return idTaxa;
 	}
@@ -26,7 +38,5 @@ public class Taxa {
 	public void setValor(long valor) {
 		this.valor = valor;
 	}
-	private int ano;
-	private int mes;
-	private long valor;
+
 }

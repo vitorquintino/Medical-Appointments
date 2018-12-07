@@ -1,9 +1,15 @@
-package model;
+package dto;
 
 public class Doenca {
     private int idDoenca;
     private String nome;
     
+    
+	public Doenca(int idDoenca, String nome) {
+		super();
+		this.idDoenca = idDoenca;
+		this.nome = nome;
+	}
 	public int getIdDoenca() {
 		return idDoenca;
 	}
