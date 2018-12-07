@@ -48,7 +48,7 @@ public class PacienteDaoJDBC extends ConnectionFactory {
 			pstmt.setString(1, paciente.getCpf());
 			pstmt.setString(2, paciente.getNome());
 			pstmt.setString(3, paciente.getTelefone());
-			pstmt.setString(4, paciente.getEndereço());
+			pstmt.setString(4, paciente.getEndereco());
 			pstmt.setInt(5, paciente.getIdade());
 			pstmt.setString(6, paciente.getSexo());
 			pstmt.execute();
