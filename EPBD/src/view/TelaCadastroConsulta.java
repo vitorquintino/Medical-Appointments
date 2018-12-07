@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -12,17 +13,22 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import conexao.BaseDadosException;
+import dao.EspecialidadeDaoJDBC; 
+import dao.MedicoDaoJDBC;
+import view.TelaProcuraCadastro;
+
 public class TelaCadastroConsulta extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
 	private JButton btnEscolherEspecialidade, btnAgendar, btnEscolherMedico;
 	private JLabel lblEspecialidade, lblMedico, lblHorario, lblDia;
 	private JComboBox<String> cmbEspecialidade, cmbMedico, cmbHorarios, cmbDia;
-	private final TelaCadastroPaciente t;
+	private final JFrame t;
 	private JPanel pnlPrincipal;
 	
-	//preciso dos horarios disponíveis do médico
-	public TelaCadastroConsulta(TelaCadastroPaciente t) {
+	//preciso dos horarios disponï¿½veis do mï¿½dico
+	public TelaCadastroConsulta(JFrame t) {
 		this.setSize(new Dimension(500, 320));
 		this.setResizable(false);
 		this.setLayout(null);
@@ -30,11 +36,14 @@ public class TelaCadastroConsulta extends JFrame{
 		this.setLocationRelativeTo(null);
 		this.t = t;
 		t.dispose();
-		inicializaTela();
+		try {
+			inicializaTela();
+		} catch(Exception e) {}
+		
 		defineEventos();
 	}
 	
-	private void inicializaTela() {
+	private void inicializaTela() throws BaseDadosException {
 		Font fonte = new Font("Futura", Font.BOLD, 24);
 		
 		pnlPrincipal = new JPanel();
@@ -47,10 +56,10 @@ public class TelaCadastroConsulta extends JFrame{
 		lblEspecialidade.setFont(fonte);
 		lblEspecialidade.setSize(180, 40);
 		
-		Vector<String> especialidades = new Vector<String>();
-		//puxar todas as especialidades
+		EspecialidadeDaoJDBC especialidadeDao = new EspecialidadeDaoJDBC();
+		Vector<String> especialidades = especialidadeDao.nomesDeTodasEspecialidades();
 		
-		cmbEspecialidade = new JComboBox<String>();
+		cmbEspecialidade = new JComboBox<String>(especialidades);
 		cmbEspecialidade.setLocation(200, 10);
 		cmbEspecialidade.setSize(220, 40);
 		
@@ -58,7 +67,7 @@ public class TelaCadastroConsulta extends JFrame{
 		btnEscolherEspecialidade.setSize(40, 40);
 		btnEscolherEspecialidade.setLocation(430, 10);
 		
-		lblMedico = new JLabel("Médico");
+		lblMedico = new JLabel("Mï¿½dico");
 		lblMedico.setLocation(10, 60);
 		lblMedico.setSize(150, 40);
 		lblMedico.setFont(fonte);
@@ -85,7 +94,7 @@ public class TelaCadastroConsulta extends JFrame{
 		cmbDia.setLocation(120, 110);
 		cmbDia.setVisible(false);
 		
-		lblHorario = new JLabel("Horário");
+		lblHorario = new JLabel("Horï¿½rio");
 		lblHorario.setLocation(10, 160);
 		lblHorario.setSize(150, 40);
 		lblHorario.setFont(fonte);
@@ -120,16 +129,18 @@ public class TelaCadastroConsulta extends JFrame{
 	private void defineEventos() {
 		btnEscolherEspecialidade.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent a) {
+				LinkedList<String> medicos = null;
+				try {
+					medicos = new MedicoDaoJDBC().listarNomesPorEspecialidade(cmbEspecialidade.getSelectedItem().toString());	
+				} catch (Exception e) {}
 				
-				//método que pega todos os médicos da especialidade selecionada
-				
-				//medicos em um vector
-				//if achou
-					//for(String s: medicos)
-					//cmbMedico.addItem(medico)
+				for (int i = 0; i < medicos.size(); i++) {
+				    cmbMedico.addItem(medicos.get(i));
+				}
 				
 				lblMedico.setVisible(true);
 				cmbMedico.setVisible(true);
+				
 				btnEscolherMedico.setVisible(true);
 			}
 		});
@@ -146,7 +157,7 @@ public class TelaCadastroConsulta extends JFrame{
 		
 		btnAgendar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent a) {
-				//verificar se o horário ja ta preenchido na agenda. se tiver não deixa marcar a consulta
+				//verificar se o horï¿½rio ja ta preenchido na agenda. se tiver nï¿½o deixa marcar a consulta
 			}
 		});
 	}

@@ -11,10 +11,11 @@ import dto.Paciente;
 public class MedicoDaoJDBC extends ConnectionFactory {
 
 	
-	public LinkedList<String>  listarNomesPorEspecialidade(Especialidade especialidade) throws BaseDadosException {
+	public LinkedList<String>  listarNomesPorEspecialidade(String especialidade) throws BaseDadosException {
 		abreConexao();
-		preparaComandoSQL("SELECT NOME FROM MEDICO WHERE CRM IN (SELECT CRMMEDICO FROM MEDICOESPECIALIDADE WHERE CODIGOESPECIALIDADE "
-				+ "= (SELECT CODIGO FROM ESPECIALIDADE WHERE NOME = '" + especialidade.getNome() +"'));;");
+		preparaComandoSQL("SELECT NOME FROM medico WHERE CRM IN (SELECT CRMMEDICO FROM medicoEspecialidade WHERE CODIGOESPECIALIDADE "
+				+ "= (SELECT CODIGO FROM especialidade WHERE NOME = '" + especialidade +"'));");
+		
 		LinkedList<String> lista = new LinkedList<>();
 
 		try {

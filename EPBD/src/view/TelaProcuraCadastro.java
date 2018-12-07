@@ -10,6 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import dao.PacienteDaoJDBC;
+import dto.Paciente;
+import view.TelaCadastroConsulta;
 
 public class TelaProcuraCadastro extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -63,8 +66,19 @@ public class TelaProcuraCadastro extends JFrame{
 	private void defineEventos() {
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent a) {
-				//pesquisa se tem um cadastro com esse cpf
-				new TelaCadastroPaciente(t).setVisible(true);
+				
+				PacienteDaoJDBC PacienteDao = new PacienteDaoJDBC();
+				Paciente paciente = null;
+				
+				try {
+					paciente = PacienteDao.buscaCPF(txtPesquisar.getText());					
+				} catch (Exception e) {}
+				
+				if (paciente == null) {
+					new TelaCadastroPaciente(t).setVisible(true);
+				} else {
+					new TelaCadastroConsulta(t).setVisible(true);
+				}
 			}
 		});
 	}

@@ -11,9 +11,9 @@ import dto.Paciente;
 public class EspecialidadeDaoJDBC extends ConnectionFactory {
 
 	
-	public Vector<String> nomesDeTodasEspecialidades(String cpf) throws BaseDadosException {
+	public Vector<String> nomesDeTodasEspecialidades() throws BaseDadosException {
 		abreConexao();
-		preparaComandoSQL("SELECT NOME FROM ESPECIALIDADE;");
+		preparaComandoSQL("SELECT NOME FROM especialidade;");
 		Vector<String> lista = new Vector<>();
 
 		try {

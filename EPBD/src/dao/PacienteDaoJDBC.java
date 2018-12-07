@@ -53,8 +53,6 @@ public class PacienteDaoJDBC extends ConnectionFactory {
 			pstmt.setString(6, paciente.getSexo());
 			pstmt.execute();
 
-			
-
 		} catch (SQLException e) {
 
 			throw new BaseDadosException("Erro ao cadastrar aluno.");

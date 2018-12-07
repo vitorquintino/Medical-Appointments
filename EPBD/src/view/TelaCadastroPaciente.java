@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import dto.Paciente;
+import dao.PacienteDaoJDBC;
 
 public class TelaCadastroPaciente extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -21,11 +23,12 @@ public class TelaCadastroPaciente extends JFrame {
 	private JPanel pnlPrincipal;
 	private final TelaProcuraCadastro t;
 	private final TelaCadastroPaciente t2;
+	private JTextField txtSexo;
 	
 	public TelaCadastroPaciente(TelaProcuraCadastro t) {
 		this.setSize(new Dimension(600, 260));
 		this.setResizable(false);
-		this.setLayout(null);
+		getContentPane().setLayout(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.t = t;
@@ -40,8 +43,8 @@ public class TelaCadastroPaciente extends JFrame {
 		Font fonte2 = new Font("Arial", 0, 22);
 		
 		pnlPrincipal = new JPanel();
-		pnlPrincipal.setLocation(10, 10);
-		pnlPrincipal.setSize(680, 240);
+		pnlPrincipal.setLocation(0, 10);
+		pnlPrincipal.setSize(690, 311);
 		pnlPrincipal.setLayout(null);
 		
 		lblNome = new JLabel("Nome");
@@ -84,7 +87,7 @@ public class TelaCadastroPaciente extends JFrame {
 		txtTelefone.setSize(180, 40);
 		txtTelefone.setFont(fonte2);
 		
-		lblEndereco = new JLabel("Endereço");
+		lblEndereco = new JLabel("Endereï¿½o");
 		lblEndereco.setLocation(10, 110);
 		lblEndereco.setFont(fonte);
 		lblEndereco.setSize(120, 40);
@@ -112,12 +115,28 @@ public class TelaCadastroPaciente extends JFrame {
 		pnlPrincipal.add(txtEndereco);
 		pnlPrincipal.add(btnCadastrar);
 		
-		this.add(pnlPrincipal);
+		getContentPane().add(pnlPrincipal);
+		
+		JLabel lblSexo = new JLabel("Sexo");
+		lblSexo.setFont(new Font("Dialog", Font.BOLD, 24));
+		lblSexo.setBounds(10, 160, 120, 40);
+		pnlPrincipal.add(lblSexo);
+		
+		txtSexo = new JTextField();
+		txtSexo.setFont(new Font("Dialog", Font.PLAIN, 22));
+		txtSexo.setBounds(100, 160, 140, 40);
+		pnlPrincipal.add(txtSexo);
 	}
 	
 	private void defineEventos() {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent a) {
+				Paciente paciente = new Paciente(1, txtCpf.getText(), Integer.parseInt(txtIdade.getText()), txtTelefone.getText(), txtEndereco.getText(), txtSexo.getText(), txtNome.getText());
+				PacienteDaoJDBC pacienteDao = new PacienteDaoJDBC();
+				try {
+					pacienteDao.insere(paciente);
+				} catch (Exception e) {}
+				
 				//pesquisa se tem um cadastro com esse cpf
 				new TelaCadastroConsulta(t2).setVisible(true);
 			}

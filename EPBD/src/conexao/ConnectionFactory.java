@@ -14,14 +14,14 @@ public class ConnectionFactory {
     protected static Connection con;
     protected static PreparedStatement pstmt;
     protected static ResultSet rs;
-    protected static final String DB = "titanweb1";
+    protected static final String DB = "climed";
 
     protected static Connection getConnection() throws BaseDadosException {
         String url = "jdbc:mysql://localhost/" + DB + "?serverTimezone=UTC&useSSL=false";
         try {
 
 
-            return DriverManager.getConnection(url, "root", "1234");
+            return DriverManager.getConnection(url, "root", "root");
 
 
         } catch (SQLException ex) {
@@ -36,10 +36,7 @@ public class ConnectionFactory {
         String url = "jdbc:mysql://localhost/?serverTimezone=UTC&useSSL=false";
         try {
 
-
-            return DriverManager.getConnection(url, "root", "1234");
-
-
+            return DriverManager.getConnection(url, "root", "root");
 
         } catch (SQLException ex) {
             System.out.println("Deu erro no connection factory 1");
