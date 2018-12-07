@@ -5,17 +5,17 @@ public class Paciente {
 	private String cpf;
 	private int idade;
 	private String telefone;
-	private String endereço;
+	private String endereco;
 	private String sexo;
 	private String nome;
 	
-	public Paciente(int cod, String cpf, int idade, String telefone, String endereço, String sexo, String nome) {
+	public Paciente(int cod, String cpf, int idade, String telefone, String endereco, String sexo, String nome) {
 		super();
 		this.cod = cod;
 		this.cpf = cpf;
 		this.idade = idade;
 		this.telefone = telefone;
-		this.endereço = endereço;
+		this.endereco = endereco;
 		this.sexo = sexo;
 		this.nome = nome;
 	}
@@ -47,10 +47,10 @@ public class Paciente {
 		this.cpf = cpf;
 	}
 	public String getEndereço() {
-		return endereço;
+		return endereco;
 	}
 	public void setEndereço(String endereço) {
-		this.endereço = endereço;
+		this.endereco = endereço;
 	}
 	public String getSexo() {
 		return sexo;
