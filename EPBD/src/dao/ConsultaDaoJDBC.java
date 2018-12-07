@@ -1,6 +1,10 @@
 package dao;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.util.LinkedList;
+import java.util.Vector;
 
 import conexao.BaseDadosException;
 import conexao.ConnectionFactory;
@@ -39,6 +43,12 @@ public class ConsultaDaoJDBC extends ConnectionFactory {
 
 		fechaConexao();
 	}
+	
+	
+
+	
+	
+	
 	
 	
 }
