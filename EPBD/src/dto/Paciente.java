@@ -46,11 +46,11 @@ public class Paciente {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public String getEndereço() {
+	public String getEndereco() {
 		return endereco;
 	}
-	public void setEndereço(String endereço) {
-		this.endereco = endereço;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 	public String getSexo() {
 		return sexo;
