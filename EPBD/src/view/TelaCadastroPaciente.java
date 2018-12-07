@@ -2,6 +2,8 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -18,6 +20,7 @@ public class TelaCadastroPaciente extends JFrame {
 	private JLabel lblNome, lblIdade, lblCpf, lblTelefone, lblEndereco;
 	private JPanel pnlPrincipal;
 	private final TelaProcuraCadastro t;
+	private final TelaCadastroPaciente t2;
 	
 	public TelaCadastroPaciente(TelaProcuraCadastro t) {
 		this.setSize(new Dimension(600, 260));
@@ -26,6 +29,7 @@ public class TelaCadastroPaciente extends JFrame {
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.t = t;
+		this.t2 = this;
 		t.dispose();
 		inicializaTela();
 		defineEventos();
@@ -112,6 +116,11 @@ public class TelaCadastroPaciente extends JFrame {
 	}
 	
 	private void defineEventos() {
-		
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent a) {
+				//pesquisa se tem um cadastro com esse cpf
+				new TelaCadastroConsulta(t2).setVisible(true);
+			}
+		});
 	}
 }
