@@ -1,4 +1,4 @@
-# EPBD
+# Medical Appointments
 
 Este repositório foi feito como EP1 da matéria de Banco de Dados.
 
